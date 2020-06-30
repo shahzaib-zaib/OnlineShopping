@@ -20,10 +20,10 @@
           if ($b = "id") {
             $query = "select * from product where Id = $a";
           } else if ($b = "pname") {
-            $query = "select * from product where pname = $a";
+            $query = "select * from product where Name like '%$a%'";
           }
           else if ($b = "pcategory") {
-            $query = "select * from product where pcategory = $a";
+            $query = "select * from product where Category like '%$a%'";
           }
           
           $query = "select * from product where Id = $a";
