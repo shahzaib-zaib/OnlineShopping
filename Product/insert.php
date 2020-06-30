@@ -14,9 +14,25 @@
 
         // Read/View Logic
         $fetch_query = "select * From product";
+        if (isset($_GET['searchbtn'])) {
+          $a = $_GET['searchtxt'];
+          $query = "select * from product where Id = $a";
+        }
         $fetch_execute = mysqli_query($con, $fetch_query);
         $countrows = mysqli_num_rows($fetch_execute);
         if($countrows != 0){
+          echo "<form action=''>
+              <label for="">Search</label>
+              <select name='searchoption'>
+                <option value='id'>Id</option>
+                <option value='pname'>IProduct Name</option>
+                <option value='pcategory'>Product Category</option>
+              </select>
+              <input type='text' name='searchtxt'>
+              <input type='submit' name='searchbtn' value='Search'>
+              <a href='#'>Reset Filter</a>
+          </form>";
+          
             while($balti = mysqli_fetch_array($fetch_execute))
             {
                 echo "<div class='card'>
