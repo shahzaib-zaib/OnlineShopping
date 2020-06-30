@@ -20,7 +20,9 @@
         if(isset($_POST['Savebtn'])){
             $email = $_POST['email'];
             $pswd = $_POST['pswd'];
-
+            $login_query = "select * from user where Email = '$email' and Password = '$pswd'";
+            $execute = mysqli_query($con, $login);
+            $verfy = mysqli_num_rows($execute);
         }
 
     ?>
