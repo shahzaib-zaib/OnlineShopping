@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+if(isset($_SESSION['name'])){
+  
+}
     // Create Data
     $con = mysqli_connect('localhost','root', '', 'shoppingdb');
     if(isset($_POST['Savebtn'])){
