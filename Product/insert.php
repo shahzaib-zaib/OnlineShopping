@@ -16,6 +16,16 @@
         $fetch_query = "select * From product";
         if (isset($_GET['searchbtn'])) {
           $a = $_GET['searchtxt'];
+          $b = $_GET['searchoption'];
+          if ($b = "id") {
+            $query = "select * from product where Id = $a";
+          } else if ($b = "pname") {
+            $query = "select * from product where pname = $a";
+          }
+          else if ($b = "pcategory") {
+            $query = "select * from product where pcategory = $a";
+          }
+          
           $query = "select * from product where Id = $a";
         }
         $fetch_execute = mysqli_query($con, $fetch_query);
@@ -25,7 +35,7 @@
               <label for="">Search</label>
               <select name='searchoption'>
                 <option value='id'>Id</option>
-                <option value='pname'>IProduct Name</option>
+                <option value='pname'>Product Name</option>
                 <option value='pcategory'>Product Category</option>
               </select>
               <input type='text' name='searchtxt'>
