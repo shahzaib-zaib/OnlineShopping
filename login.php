@@ -18,11 +18,22 @@
     <?php
 
         if(isset($_POST['Savebtn'])){
+            session_start();
             $email = $_POST['email'];
             $pswd = $_POST['pswd'];
             $login_query = "select * from user where Email = '$email' and Password = '$pswd'";
             $execute = mysqli_query($con, $login);
             $verfy = mysqli_num_rows($execute);
+            if ($verfy == 1) {
+                $cdata = mysqli_fetch_array($execute);
+                $_SESSION['name'] = $data['1'];
+                header('location:Product/insert.php');
+            } else {
+                echo "<script>
+                alert('Login Not Successfully');
+                </script>";
+            }
+            
         }
 
     ?>
