@@ -12,6 +12,19 @@ if(isset($_SESSION['name'])){
         $c = $_POST['ProPrice'];
         $d = $_POST['ProDescription'];
 
+        $imagename = $_FILES['ImageUpload']['name'];
+        $imagesize = $_FILES['ImageUpload']['size'];
+        $imageextension = $_FILES['ImageUpload']['type'];
+        $imagetempAdd = $_FILES['ImageUpload']['tmp_name'];
+
+        //Extension Checking
+        if (condition) {
+          # code...
+        } else {
+          # code...
+        }
+        
+
         $insert_query = "insert into product(Name,Category,Price,Description)
         values('$a','$b','$c','$d')";
         $insert_execute = mysqli_query($con,$insert_query);
