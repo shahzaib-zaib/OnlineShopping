@@ -22,8 +22,8 @@ if(isset($_SESSION['name'])){
           if ($imagesize <= 2000000) {
             $ImageSave = "Images/" . $imagename;
             move_uploaded_file($imagetempAdd, $ImageSave);
-            $insert_query = "insert into product(Name,Category,Price,Description)
-            values('$a','$b','$c','$d')";
+            $insert_query = "insert into product(Name,Category,Price,Description,ProImage)
+            values('$a','$b','$c','$d','$ImageSave')";
             $insert_execute = mysqli_query($con,$insert_query);
           } else {
             echo "<script>alert('Size not Supported')</script>";
