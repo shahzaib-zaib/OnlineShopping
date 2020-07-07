@@ -7,16 +7,19 @@
 </head>
 <body>
     <h2>Add Product</h2>
-    <form action="insert.php" method="post">
+    <form action="insert.php" method="post" enctype="multipart/form-data">
         <p>Enter Product Name</p>
         <input type="text" name="ProName" id="">
         <br>
         <select name="ProCategory" id="">
-            <option value="Electtricity">Electricity</option>
-            <option value="mobile">Mobile</option>
-            <option value="clothes">Clothes</option>
-            <option value="crockery">Crockery</option>
-            <option value="other">Other</option>
+            <?php
+            include "config.php";
+            $run = mysqli_query($con, "select * from Category");
+            while($row = mysqli_fetch_assoc($run)){
+
+            }
+
+            ?>
         </select>
         <br>
         <p>Enter Product Price</p>
@@ -25,6 +28,9 @@
         <p>Enter Product Price</p>
         <textarea name="ProDescription" id="" cols="20" rows="05"></textarea>
         <br>
+        <p>Please Upload Product Image</p>
+        <input type="file" name="ImageUpload">
+        <br><br>
         <input type="submit" value="Add Product" name="Savebtn" id="">
 
     </form>
