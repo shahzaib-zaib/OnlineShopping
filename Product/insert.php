@@ -18,16 +18,20 @@ if(isset($_SESSION['name'])){
         $imagetempAdd = $_FILES['ImageUpload']['tmp_name'];
 
         //Extension Checking
-        if (condition) {
-          # code...
+        if (strtolower($imageextension) == "image/jpg" || strtolower($imageextension) == "image/jpeg") {
+          if ($imagesize <= 2000000) {
+            $ImageSave = "Images/" . $imagename;
+            move_uploaded_file($imagetempAdd, $ImageSave);
+            $insert_query = "insert into product(Name,Category,Price,Description)
+            values('$a','$b','$c','$d')";
+            $insert_execute = mysqli_query($con,$insert_query);
+          } else {
+            echo "<script>alert('Size not Supported')</script>";
+          }
+          
         } else {
-          # code...
+          echo "<script>alert('Extension not Supported')</script>";
         }
-        
-
-        $insert_query = "insert into product(Name,Category,Price,Description)
-        values('$a','$b','$c','$d')";
-        $insert_execute = mysqli_query($con,$insert_query);
 
         // Read/View Logic
         $fetch_query = "select * From product";
