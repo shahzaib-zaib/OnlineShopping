@@ -11,16 +11,21 @@
         <p>Enter Product Name</p>
         <input type="text" name="ProName" id="">
         <br>
-        <select name="ProCategory" id="">
+        <select name="ProCategory" class="form-control">
+            <option> Select Category</option>
             <?php
-            include "config.php";
-            $run = mysqli_query($con, "select * from Category");
-            while($row = mysqli_fetch_assoc($run)){
+                include "config.php";
+                $sql = "SELECT * FROM product";
+                $result = mysqli_query($con,$sql) or die("Query Failed");
 
-            }
-
-            ?>
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        
+                    }
+                }
+        ?>
         </select>
+        
         <br>
         <p>Enter Product Price</p>
         <input type="number" name="ProPrice" id="">
